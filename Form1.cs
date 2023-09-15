@@ -23,12 +23,15 @@ namespace WindowsFormsApp1
 
         }
 
-        private void plusBtn_Click(object sender, EventArgs e)
+        private void equalBtn_Click(object sender, EventArgs e)
         {
             textBox.Text = model.GetResult().ToString();
         }
 
-        private Model model;
+        private void numBtn_Click(object sender, EventArgs e)
+        {
+            textBox.Text = model.GetResult().ToString();
+        }
     }
 
     public partial class Model
