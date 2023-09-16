@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
         {
             this._textBox = new System.Windows.Forms.TextBox();
             this._numberButtons = new List<System.Windows.Forms.Button>();
+            this._operatorButtons= new List<System.Windows.Forms.Button>();
             this._plusButton = new System.Windows.Forms.Button();
             this._equalButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -62,6 +63,22 @@ namespace WindowsFormsApp1
                 num.UseVisualStyleBackColor = true;
                 num.Click += (sender, e) => NumberButtonClick(sender, e, int.Parse(num.Text));
                 this._numberButtons.Add(num);
+            }
+            //
+            // operationButton
+            //
+            string[] operators = { "+", "-", "×", "÷" };
+            for (int i = 0; i < 4; i++)
+            {
+                System.Windows.Forms.Button operatorButton = new System.Windows.Forms.Button();
+                operatorButton.Location = new System.Drawing.Point(200 + 65 * (i % 3), 140 + 57 * (i / 3));
+                operatorButton.Name = "operationBtn" + i.ToString();
+                operatorButton.Size = new System.Drawing.Size(62, 54);
+                operatorButton.TabIndex = 1;
+                operatorButton.Text = operators[i];
+                operatorButton.UseVisualStyleBackColor = true;
+                operatorButton.Click += (sender, e) => OperationButtonClick(sender, e, operatorButton.Text);
+                this._operatorButtons.Add(operatorButton);
             }
             // 
             // plusBtn
@@ -95,6 +112,10 @@ namespace WindowsFormsApp1
             {
                 this.Controls.Add((this._numberButtons[i]));
             }
+            for (int i = 0; i < 4; i++)
+            {
+                this.Controls.Add((this._operatorButtons[i]));
+            }
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1Load);
@@ -106,6 +127,7 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.TextBox _textBox;
         private List<System.Windows.Forms.Button> _numberButtons;
+        private List<System.Windows.Forms.Button> _operatorButtons;
         private System.Windows.Forms.Button _plusButton;
         private System.Windows.Forms.Button _equalButton;
         private Model _model;

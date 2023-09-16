@@ -49,5 +49,15 @@ namespace WindowsFormsApp1
             _model.SetCurrentValue(value, false);
             _textBox.Text = _model.GetCurrentValue().ToString();
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="value"></param>
+        private void OperationButtonClick(object sender, EventArgs e, string value)
+        {
+        }
     }
 }
