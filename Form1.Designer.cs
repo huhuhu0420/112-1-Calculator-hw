@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Channels;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1
 {
@@ -34,7 +36,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this._textBox = new System.Windows.Forms.TextBox();
-            this._numberButtons = new List<NumberButton>();
+            this._numberButtons = new List<System.Windows.Forms.Button>();
             this._plusButton = new System.Windows.Forms.Button();
             this._equalButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -51,15 +53,14 @@ namespace WindowsFormsApp1
             //
             for (int i = 0; i < 10; i++)
             {
-                NumberButton num = new NumberButton();
+                System.Windows.Forms.Button num = new System.Windows.Forms.Button();
                 num.Location = new System.Drawing.Point(450 + 65 * (i % 3), 140 + 57 * (i / 3));
                 num.Name = "numBtn" + i.ToString();
                 num.Size = new System.Drawing.Size(62, 54);
                 num.TabIndex = 1;
                 num.Text = i.ToString();
-                num.SetValue(i);
                 num.UseVisualStyleBackColor = true;
-                num.Click += (sender, e) => NumberButtonClick(sender, e, num.GetValue());
+                num.Click += (sender, e) => NumberButtonClick(sender, e, int.Parse(num.Text));
                 this._numberButtons.Add(num);
             }
             // 
@@ -104,7 +105,7 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.TextBox _textBox;
-        private List<NumberButton> _numberButtons;
+        private List<System.Windows.Forms.Button> _numberButtons;
         private System.Windows.Forms.Button _plusButton;
         private System.Windows.Forms.Button _equalButton;
         private Model _model;
