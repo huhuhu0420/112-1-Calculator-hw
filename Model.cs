@@ -12,29 +12,78 @@ namespace WindowsFormsApp1
         /// getter
         /// </summary>
         /// <returns></returns>
-        public double GetCurrentValue()
+        public double GetResultValue()
         {
-            return _currentValue;
+            return _resultValue;
+        }
+        
+        /// <summary>
+        /// getter
+        /// </summary>
+        /// <returns></returns>
+        public double GetInputValue()
+        {
+            return _inputValue;
+        }
+
+        /// <summary>
+        /// setter
+        /// </summary>
+        /// <param name="calculateValue"></param>
+        public void SetResultValue(double currentValue)
+        {
+            _resultValue = currentValue;
         }
 
         /// <summary>
         /// setter
         /// </summary>
         /// <param name="value"></param>
-        public void SetCurrentValue(int value, bool isClear)
+        public void SetInputValue(int value, bool isClear)
         {
             if (!isClear)
             {
-                _currentValue = _currentValue * 10 + value;
+                _inputValue = _inputValue * 10 + value;
             }
             else
             {
-                _currentValue = 0;
+                _inputValue = 0;
             }
         }
 
-        private double _currentValue = 0;
-        private double _calculateValue = 0;
+        /// <summary>
+        /// setter
+        /// </summary>
+        /// <param name="???"></param>
+        public void SetOperator(string operators)
+        {
+            _operator = operators;
+        }
+
+        /// <summary>
+        /// calculate
+        /// </summary>
+        public void Calculate()
+        {
+            switch (_operator)
+            {
+                case "+":
+                    _resultValue += _inputValue;
+                    break;
+                case "-":
+                    _resultValue -= _inputValue;
+                    break;
+                case "×":
+                    _resultValue *= _inputValue;
+                    break;
+                case "÷":
+                    _resultValue /= _inputValue;
+                    break;
+            }
+        }
+
+        private double _resultValue = 0;
+        private double _inputValue = 0;
         private string _operator = "";
     }
 }

@@ -35,7 +35,8 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void EqualButtonClick(object sender, EventArgs e)
         {
-            _textBox.Text = _model.GetCurrentValue().ToString();
+            _model.Calculate();
+            _textBox.Text = _model.GetResultValue().ToString();
         }
 
         /// <summary>
@@ -46,8 +47,8 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         private void NumberButtonClick(object sender, EventArgs e, int value)
         {
-            _model.SetCurrentValue(value, false);
-            _textBox.Text = _model.GetCurrentValue().ToString();
+            _model.SetInputValue(value, false);
+            _textBox.Text = _model.GetInputValue().ToString();
         }
         
         /// <summary>
@@ -58,6 +59,9 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         private void OperationButtonClick(object sender, EventArgs e, string value)
         {
+            _model.SetOperator(value);
+            _model.SetResultValue(_model.GetInputValue());
+            _model.SetInputValue(0, true);
         }
     }
 }

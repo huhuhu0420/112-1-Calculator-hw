@@ -38,7 +38,6 @@ namespace WindowsFormsApp1
             this._textBox = new System.Windows.Forms.TextBox();
             this._numberButtons = new List<System.Windows.Forms.Button>();
             this._operatorButtons= new List<System.Windows.Forms.Button>();
-            this._plusButton = new System.Windows.Forms.Button();
             this._equalButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -52,7 +51,7 @@ namespace WindowsFormsApp1
             //
             // nums
             //
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < _numberButtonCount; i++)
             {
                 System.Windows.Forms.Button num = new System.Windows.Forms.Button();
                 num.Location = new System.Drawing.Point(450 + 65 * (i % 3), 140 + 57 * (i / 3));
@@ -68,7 +67,7 @@ namespace WindowsFormsApp1
             // operationButton
             //
             string[] operators = { "+", "-", "×", "÷" };
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < _operatorButtonCount; i++)
             {
                 System.Windows.Forms.Button operatorButton = new System.Windows.Forms.Button();
                 operatorButton.Location = new System.Drawing.Point(200 + 65 * (i % 3), 140 + 57 * (i / 3));
@@ -80,15 +79,6 @@ namespace WindowsFormsApp1
                 operatorButton.Click += (sender, e) => OperationButtonClick(sender, e, operatorButton.Text);
                 this._operatorButtons.Add(operatorButton);
             }
-            // 
-            // plusBtn
-            // 
-            this._plusButton.Location = new System.Drawing.Point(688, 240);
-            this._plusButton.Name = "plusBtn";
-            this._plusButton.Size = new System.Drawing.Size(62, 54);
-            this._plusButton.TabIndex = 1;
-            this._plusButton.Text = "+";
-            this._plusButton.UseVisualStyleBackColor = true;
             // 
             // equalBtn
             // 
@@ -106,13 +96,12 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._equalButton);
-            this.Controls.Add(this._plusButton);
             this.Controls.Add(this._textBox);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < _numberButtonCount; i++)
             {
                 this.Controls.Add((this._numberButtons[i]));
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < _operatorButtonCount; i++)
             {
                 this.Controls.Add((this._operatorButtons[i]));
             }
@@ -128,9 +117,11 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox _textBox;
         private List<System.Windows.Forms.Button> _numberButtons;
         private List<System.Windows.Forms.Button> _operatorButtons;
-        private System.Windows.Forms.Button _plusButton;
         private System.Windows.Forms.Button _equalButton;
         private Model _model;
+        
+        private const int _numberButtonCount = 10;
+        private const int _operatorButtonCount = 4;
 
     }
 }
