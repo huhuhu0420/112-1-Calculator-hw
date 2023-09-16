@@ -15,38 +15,66 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            model = new Model();
+            _model = new Model();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        /// <summary>
+        /// load form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1Load(object sender, EventArgs e)
         {
 
         }
 
-        private void equalBtn_Click(object sender, EventArgs e)
+        /// <summary>
+        /// event while clicking equalBtn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EqualButtonClick(object sender, EventArgs e)
         {
-            textBox.Text = model.GetScreenValue().ToString();
+            _textBox.Text = _model.GetScreenValue().ToString();
         }
-        
-        private void numBtn_Click(object sender, EventArgs e, int value)
+
+        /// <summary>
+        /// event while clicking numBtn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="value"></param>
+        private void NumberButtonClick(object sender, EventArgs e, int value)
         {
-            model.SetScreenValue(value.ToString());
+            _model.SetScreenValue(value.ToString());
         }
     }
 
     public partial class Model
     {
-        public Model() { }
-        public string GetScreenValue()
+        public Model()
         { 
-            return screenValue;
-        }
-        public void SetScreenValue(String s)
-        {
-            screenValue = s;
         }
 
-        private string screenValue = "0";
+        /// <summary>
+        /// getter
+        /// </summary>
+        /// <returns></returns>
+        public string GetScreenValue()
+        { 
+            return _screenValue;
+        }
+
+        /// <summary>
+        /// setter
+        /// </summary>
+        /// <param name="s"></param>
+        public void SetScreenValue(String value)
+        {
+            _screenValue = value;
+        }
+
+        private string _screenValue = "0";
 
     }
 }
