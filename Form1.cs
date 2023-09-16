@@ -25,26 +25,28 @@ namespace WindowsFormsApp1
 
         private void equalBtn_Click(object sender, EventArgs e)
         {
-            textBox.Text = model.GetResult().ToString();
+            textBox.Text = model.GetScreenValue().ToString();
         }
-
-        private void numBtn_Click(object sender, EventArgs e)
+        
+        private void numBtn_Click(object sender, EventArgs e, int value)
         {
-            textBox.Text = model.GetResult().ToString();
+            model.SetScreenValue(value.ToString());
         }
     }
 
     public partial class Model
     {
         public Model() { }
-        public double GetResult()
+        public string GetScreenValue()
         { 
-        
-            return result;
+            return screenValue;
+        }
+        public void SetScreenValue(String s)
+        {
+            screenValue = s;
         }
 
-        private double result = 0;
-        private double[] nums = { 0, 0 };
+        private string screenValue = "0";
 
     }
 }

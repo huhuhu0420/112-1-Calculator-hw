@@ -1,4 +1,8 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
+
 namespace WindowsFormsApp1
 {
     partial class Form1
@@ -30,7 +34,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.textBox = new System.Windows.Forms.TextBox();
-            this.nums = new NumBtn[10];
+            this.nums = new List<NumBtn>();
             this.plusBtn = new System.Windows.Forms.Button();
             this.equalBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -47,13 +51,16 @@ namespace WindowsFormsApp1
             //
             for (int i = 0; i < 10; i++)
             {
-                this.nums[i] = new NumBtn();
-                this.nums[i].Location = new System.Drawing.Point(450 + 65 * (i % 3), 140 + 57 * (i / 3));
-                this.nums[i].Name = "numBtn" + i.ToString();
-                this.nums[i].Size = new System.Drawing.Size(62, 54);
-                this.nums[i].TabIndex = 1;
-                this.nums[i].Text = i.ToString();
-                this.nums[i].UseVisualStyleBackColor = true;
+                NumBtn num = new NumBtn();
+                num.Location = new System.Drawing.Point(450 + 65 * (i % 3), 140 + 57 * (i / 3));
+                num.Name = "numBtn" + i.ToString();
+                num.Size = new System.Drawing.Size(62, 54);
+                num.TabIndex = 1;
+                num.Text = i.ToString();
+                num.SetValue(i);
+                num.UseVisualStyleBackColor = true;
+                num.Click += (sender, e) => numBtn_Click(sender, e, num.GetValue());
+                this.nums.Add(num);
             }
             // 
             // plusBtn
@@ -97,7 +104,7 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.TextBox textBox;
-        private NumBtn[] nums;
+        private List<NumBtn> nums;
         private System.Windows.Forms.Button plusBtn;
         private System.Windows.Forms.Button equalBtn;
         private Model model;
@@ -114,6 +121,11 @@ namespace WindowsFormsApp1
         public void SetValue (int v)
         {
             value = v;
+        }
+        
+        public int GetValue ()
+        {
+            return value;
         }
 
         private int value = 0;
