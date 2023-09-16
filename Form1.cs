@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void EqualButtonClick(object sender, EventArgs e)
         {
-            _textBox.Text = _model.GetScreenValue().ToString();
+            _textBox.Text = _model.GetCurrentValue().ToString();
         }
 
         /// <summary>
@@ -46,7 +46,8 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         private void NumberButtonClick(object sender, EventArgs e, int value)
         {
-            _model.SetScreenValue(value.ToString());
+            _model.SetCurrentValue(value, false);
+            _textBox.Text = _model.GetCurrentValue().ToString();
         }
     }
 }

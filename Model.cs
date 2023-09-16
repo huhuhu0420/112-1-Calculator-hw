@@ -12,20 +12,29 @@ namespace WindowsFormsApp1
         /// getter
         /// </summary>
         /// <returns></returns>
-        public string GetScreenValue()
-        { 
-            return _screenValue;
+        public double GetCurrentValue()
+        {
+            return _currentValue;
         }
 
         /// <summary>
         /// setter
         /// </summary>
         /// <param name="value"></param>
-        public void SetScreenValue(String value)
+        public void SetCurrentValue(int value, bool isClear)
         {
-            _screenValue = value;
+            if (!isClear)
+            {
+                _currentValue = _currentValue * 10 + value;
+            }
+            else
+            {
+                _currentValue = 0;
+            }
         }
 
-        private string _screenValue = "0";
+        private double _currentValue = 0;
+        private double _calculateValue = 0;
+        private string _operator = "";
     }
 }
