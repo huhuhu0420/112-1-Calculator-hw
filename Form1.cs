@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
         private void EqualButtonClick(object sender, EventArgs e)
         {
             _model.Calculate();
-            _textBox.Text = _model.GetResultValue().ToString();
+            _textBox.Text = _model.ResultValue.ToString();
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
         private void OperationButtonClick(object sender, EventArgs e, string value)
         {
             _model.SetOperator(value);
-            _model.SetResultValue(_model.GetInputValue());
+            _model.ResultValue = _model.GetInputValue();
             _model.SetInputValue(0, true);
         }
     }

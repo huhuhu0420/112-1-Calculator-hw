@@ -7,15 +7,6 @@ namespace WindowsFormsApp1
         public Model()
         { 
         }
-
-        /// <summary>
-        /// getter
-        /// </summary>
-        /// <returns></returns>
-        public double GetResultValue()
-        {
-            return _resultValue;
-        }
         
         /// <summary>
         /// getter
@@ -24,15 +15,6 @@ namespace WindowsFormsApp1
         public double GetInputValue()
         {
             return _inputValue;
-        }
-
-        /// <summary>
-        /// setter
-        /// </summary>
-        /// <param name="calculateValue"></param>
-        public void SetResultValue(double currentValue)
-        {
-            _resultValue = currentValue;
         }
 
         /// <summary>
@@ -49,6 +31,12 @@ namespace WindowsFormsApp1
             {
                 _inputValue = 0;
             }
+        }
+
+        public double ResultValue
+        {
+            get => _resultValue;
+            set => _resultValue = value;
         }
 
         /// <summary>
