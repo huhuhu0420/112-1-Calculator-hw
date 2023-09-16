@@ -49,32 +49,4 @@ namespace WindowsFormsApp1
             _model.SetScreenValue(value.ToString());
         }
     }
-
-    public partial class Model
-    {
-        public Model()
-        { 
-        }
-
-        /// <summary>
-        /// getter
-        /// </summary>
-        /// <returns></returns>
-        public string GetScreenValue()
-        { 
-            return _screenValue;
-        }
-
-        /// <summary>
-        /// setter
-        /// </summary>
-        /// <param name="s"></param>
-        public void SetScreenValue(String value)
-        {
-            _screenValue = value;
-        }
-
-        private string _screenValue = "0";
-
-    }
 }

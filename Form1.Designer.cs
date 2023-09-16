@@ -110,31 +110,5 @@ namespace WindowsFormsApp1
         private Model _model;
 
     }
-
-    public class NumberButton : System.Windows.Forms.Button
-    {
-        public NumberButton() : base()
-        {
-
-        }
-        /// <summary>
-        /// setter
-        /// </summary>
-        /// <param name="v"></param>
-        public void SetValue (int value)
-        {
-            _value = value;
-        }
-        /// <summary>
-        /// getter
-        /// </summary>
-        /// <returns></returns>
-        public int GetValue ()
-        {
-            return _value;
-        }
-
-        private int _value = 0;
-    }
 }
 
