@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
             //
             // nums
             //
-            for (int i = 0; i < _numberButtonCount; i++)
+            for (int i = 0; i < 10; i++)
             {
                 System.Windows.Forms.Button num = new System.Windows.Forms.Button();
                 num.Location = new System.Drawing.Point(450 + 65 * (i % 3), 140 + 57 * (i / 3));
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
             // operationButton
             //
             string[] operators = { "+", "-", "×", "÷" };
-            for (int i = 0; i < _operatorButtonCount; i++)
+            for (int i = 0; i < 4; i++)
             {
                 System.Windows.Forms.Button operatorButton = new System.Windows.Forms.Button();
                 operatorButton.Location = new System.Drawing.Point(200 + 65 * (i % 3), 140 + 57 * (i / 3));
@@ -97,11 +97,11 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._equalButton);
             this.Controls.Add(this._textBox);
-            for (int i = 0; i < _numberButtonCount; i++)
+            for (int i = 0; i < 10; i++)
             {
                 this.Controls.Add((this._numberButtons[i]));
             }
-            for (int i = 0; i < _operatorButtonCount; i++)
+            for (int i = 0; i < 4; i++)
             {
                 this.Controls.Add((this._operatorButtons[i]));
             }
@@ -120,9 +120,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button _equalButton;
         private Model _model;
         
-        private const int _numberButtonCount = 10;
-        private const int _operatorButtonCount = 4;
-
     }
 }
 

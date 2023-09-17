@@ -50,9 +50,9 @@ namespace WindowsFormsApp1
             _model.SetInputValue(value, false);
             _textBox.Text = _model.GetInputValue().ToString();
         }
-        
+
         /// <summary>
-        /// 
+        /// event while clicking operationBtn
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
