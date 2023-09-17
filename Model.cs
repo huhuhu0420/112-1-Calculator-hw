@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
@@ -21,31 +22,51 @@ namespace WindowsFormsApp1
         /// setter
         /// </summary>
         /// <param name="value"></param>
-        public void SetInputValue(int value, bool isClear)
+        public void AddInputValue(int value)
         {
-            if (!isClear)
-            {
-                _inputValue = _inputValue * 10 + value;
-            }
-            else
-            {
-                _inputValue = 0;
-            }
+            _inputValue = _inputValue * 10 + value;
+            debugLog();
+        }
+
+        /// <summary>
+        /// clear input
+        /// </summary>
+        public void ClearInputValue()
+        {
+            _inputValue = 0;
+            debugLog();
         }
 
         public double ResultValue
         {
-            get => _resultValue;
-            set => _resultValue = value;
+            get
+            {
+                return _resultValue;
+            }
+            set
+            {
+                _resultValue = value;
+                debugLog();
+            }
         }
 
-        /// <summary>
-        /// setter
-        /// </summary>
-        /// <param name="???"></param>
-        public void SetOperator(string operators)
+        public InputType LastInput
         {
-            _operator = operators;
+            get;
+            set;
+        }
+
+        public string Operation
+        {
+            get
+            {
+                return _operation;
+            }
+            set
+            {
+                _operation = value;
+                debugLog();
+            }
         }
 
         /// <summary>
@@ -53,25 +74,40 @@ namespace WindowsFormsApp1
         /// </summary>
         public void Calculate()
         {
-            switch (_operator)
+            switch (_operation)
             {
                 case "+":
-                    _resultValue += _inputValue;
+                    ResultValue += _inputValue;
                     break;
                 case "-":
-                    _resultValue -= _inputValue;
+                    ResultValue -= _inputValue;
                     break;
                 case "×":
-                    _resultValue *= _inputValue;
+                    ResultValue *= _inputValue;
                     break;
                 case "÷":
-                    _resultValue /= _inputValue;
+                    ResultValue /= _inputValue;
+                    break;
+                default:
                     break;
             }
         }
 
+        private void debugLog()
+        {
+            Debug.WriteLine("input: "+ _inputValue.ToString() + " | " + "result: " + _resultValue.ToString() + " | " + "operation: " + _operation);
+        }
+
         private double _resultValue = 0;
         private double _inputValue = 0;
-        private string _operator = "";
+        private string _operation = "";
+        private InputType _lastInput = InputType.Number;
+
+        public enum InputType
+        {
+            Number, 
+            Operation,
+            Equal,
+        }
     }
 }

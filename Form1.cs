@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
         {
             _model.Calculate();
             _textBox.Text = _model.ResultValue.ToString();
+            _model.LastInput = Model.InputType.Equal;
         }
 
         /// <summary>
@@ -47,8 +48,9 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         private void NumberButtonClick(object sender, EventArgs e, int value)
         {
-            _model.SetInputValue(value, false);
+            _model.AddInputValue(value);
             _textBox.Text = _model.GetInputValue().ToString();
+            _model.LastInput = Model.InputType.Number;
         }
 
         /// <summary>
@@ -59,9 +61,29 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         private void OperationButtonClick(object sender, EventArgs e, string value)
         {
-            _model.SetOperator(value);
-            _model.ResultValue = _model.GetInputValue();
-            _model.SetInputValue(0, true);
+            switch (_model.LastInput)
+            {
+                case Model.InputType.Equal:
+                    _model.ClearInputValue();
+                    break;
+                case Model.InputType.Number:
+                    if (_model.Operation != "")
+                    {
+                        _model.Calculate();
+                        _textBox.Text = _model.ResultValue.ToString();
+                    }
+                    else
+                    {
+                        _model.ResultValue = _model.GetInputValue();
+                    }
+                    _model.ClearInputValue();
+                    break;
+                case Model.InputType.Operation:
+                    _model.Operation = value;
+                    break;
+            }
+            _model.Operation = value;
+            _model.LastInput = Model.InputType.Operation;
         }
     }
 }
