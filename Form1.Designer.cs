@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
             this._numberButtons = new List<System.Windows.Forms.Button>();
             this._operatorButtons= new List<System.Windows.Forms.Button>();
             this._equalButton = new System.Windows.Forms.Button();
+            this._dotButton = new Button();
             this.SuspendLayout();
             // 
             // textBox
@@ -62,6 +63,7 @@ namespace WindowsFormsApp1
                 num.UseVisualStyleBackColor = true;
                 num.Click += (sender, e) => NumberButtonClick(sender, e, int.Parse(num.Text));
                 this._numberButtons.Add(num);
+                this.Controls.Add((this._numberButtons[i]));
             }
             //
             // operationButton
@@ -78,6 +80,7 @@ namespace WindowsFormsApp1
                 operatorButton.UseVisualStyleBackColor = true;
                 operatorButton.Click += (sender, e) => OperationButtonClick(sender, e, operatorButton.Text);
                 this._operatorButtons.Add(operatorButton);
+                this.Controls.Add((this._operatorButtons[i]));
             }
             // 
             // equalBtn
@@ -90,21 +93,24 @@ namespace WindowsFormsApp1
             this._equalButton.UseVisualStyleBackColor = true;
             this._equalButton.Click += new System.EventHandler(this.EqualButtonClick);
             // 
+            // dot 
+            // 
+            this._dotButton.Location = new System.Drawing.Point(688, 369);
+            this._dotButton.Name = "dotBtn";
+            this._dotButton.Size = new System.Drawing.Size(62, 54);
+            this._dotButton.TabIndex = 1;
+            this._dotButton.Text = ".";
+            this._dotButton.UseVisualStyleBackColor = true;
+            this._dotButton.Click += new System.EventHandler(this.EqualButtonClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._equalButton);
+            this.Controls.Add(this._dotButton);
             this.Controls.Add(this._textBox);
-            for (int i = 0; i < 10; i++)
-            {
-                this.Controls.Add((this._numberButtons[i]));
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                this.Controls.Add((this._operatorButtons[i]));
-            }
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1Load);
@@ -118,6 +124,7 @@ namespace WindowsFormsApp1
         private List<System.Windows.Forms.Button> _numberButtons;
         private List<System.Windows.Forms.Button> _operatorButtons;
         private System.Windows.Forms.Button _equalButton;
+        private System.Windows.Forms.Button _dotButton;
         private Model _model;
         
     }

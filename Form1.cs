@@ -41,6 +41,15 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
+        /// event while clicking dotBtn 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DotButtonClick(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
         /// event while clicking numBtn
         /// </summary>
         /// <param name="sender"></param>
