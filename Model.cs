@@ -5,10 +5,6 @@ namespace WindowsFormsApp1
 {
     public class Model
     {
-        public Model()
-        { 
-        }
-        
         /// <summary>
         /// getter
         /// </summary>
@@ -31,10 +27,26 @@ namespace WindowsFormsApp1
         /// <summary>
         /// clear input
         /// </summary>
-        public void ClearInputValue()
+        private void clearInputValue()
         {
             _inputValue = 0;
             debugLog();
+        }
+
+        /// <summary>
+        /// clear result
+        /// </summary>
+        private void clearResultValue()
+        {
+            _resultValue = 0;
+        }
+
+        /// <summary>
+        /// clear operation
+        /// </summary>
+        private void clearOperation()
+        {
+            _operation = "+";
         }
 
         public double ResultValue
@@ -88,11 +100,60 @@ namespace WindowsFormsApp1
                 case "÷":
                     ResultValue /= _inputValue;
                     break;
-                default:
-                    break;
             }
         }
 
+        /// <summary>
+        /// handle click
+        /// </summary>
+        public void HandleEqualButtonClick()
+        {
+            Calculate();
+            LastInput = InputType.Equal;
+        }
+        
+        /// <summary>
+        /// handle click
+        /// </summary>
+        /// <param name="value"></param>
+        public void HandleNumberButtonClick(int value)
+        {
+            if (LastInput == InputType.Equal)
+            {
+                    clearInputValue();
+                    clearResultValue();
+                    clearOperation();
+            }
+            AddInputValue(value);
+            LastInput = InputType.Number;
+        }
+        
+        /// <summary>
+        /// handle click
+        /// </summary>
+        /// <param name="value"></param>
+        public void HandleOperationButtonClick(string value)
+        {
+            switch (LastInput)
+            {
+                case InputType.Equal:
+                    clearInputValue();
+                    break;
+                case InputType.Number:
+                    Calculate();
+                    clearInputValue();
+                    break;
+                case InputType.Operation:
+                    Operation = value;
+                    break;
+            }
+            Operation = value;
+            LastInput = InputType.Operation;
+        }
+
+        /// <summary>
+        /// print debug
+        /// </summary>
         private void debugLog()
         {
             Debug.WriteLine("input: "+ _inputValue.ToString() + " | " + "result: " + _resultValue.ToString() + " | " + "operation: " + _operation);
@@ -100,7 +161,7 @@ namespace WindowsFormsApp1
 
         private double _resultValue = 0;
         private double _inputValue = 0;
-        private string _operation = "";
+        private string _operation = "+";
         private InputType _lastInput = InputType.Number;
 
         public enum InputType

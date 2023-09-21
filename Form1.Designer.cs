@@ -61,7 +61,7 @@ namespace WindowsFormsApp1
                 num.TabIndex = 1;
                 num.Text = i.ToString();
                 num.UseVisualStyleBackColor = true;
-                num.Click += (sender, e) => NumberButtonClick(sender, e, int.Parse(num.Text));
+                num.Click += (sender, e) => NumberButtonClick(int.Parse(num.Text));
                 this._numberButtons.Add(num);
                 this.Controls.Add((this._numberButtons[i]));
             }
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                 operatorButton.TabIndex = 1;
                 operatorButton.Text = operators[i];
                 operatorButton.UseVisualStyleBackColor = true;
-                operatorButton.Click += (sender, e) => OperationButtonClick(sender, e, operatorButton.Text);
+                operatorButton.Click += (sender, e) => OperationButtonClick(operatorButton.Text);
                 this._operatorButtons.Add(operatorButton);
                 this.Controls.Add((this._operatorButtons[i]));
             }
@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
             this._equalButton.TabIndex = 1;
             this._equalButton.Text = "=";
             this._equalButton.UseVisualStyleBackColor = true;
-            this._equalButton.Click += new System.EventHandler(this.EqualButtonClick);
+            this._equalButton.Click += (sender, e) => this.EqualButtonClick();
             // 
             // dot 
             // 
@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
             this._dotButton.TabIndex = 1;
             this._dotButton.Text = ".";
             this._dotButton.UseVisualStyleBackColor = true;
-            this._dotButton.Click += new System.EventHandler(this.EqualButtonClick);
+            this._dotButton.Click += (sender, e) => this.DotButtonClick();
             // 
             // Form1
             // 

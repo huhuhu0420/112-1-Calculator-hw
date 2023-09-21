@@ -33,11 +33,10 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void EqualButtonClick(object sender, EventArgs e)
+        private void EqualButtonClick()
         {
-            _model.Calculate();
+            _model.HandleEqualButtonClick();
             _textBox.Text = _model.ResultValue.ToString();
-            _model.LastInput = Model.InputType.Equal;
         }
 
         /// <summary>
@@ -45,7 +44,7 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DotButtonClick(object sender, EventArgs e)
+        private void DotButtonClick()
         {
         }
 
@@ -55,17 +54,10 @@ namespace WindowsFormsApp1
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="value"></param>
-        private void NumberButtonClick(object sender, EventArgs e, int value)
+        private void NumberButtonClick(int value)
         {
-            if (_model.LastInput == Model.InputType.Equal)
-            {
-                    _model.ClearInputValue();
-                    _model.ResultValue = 0;
-                    _model.Operation = "+";
-            }
-            _model.AddInputValue(value);
+            _model.HandleNumberButtonClick(value);
             _textBox.Text = _model.GetInputValue().ToString();
-            _model.LastInput = Model.InputType.Number;
         }
 
         /// <summary>
@@ -74,31 +66,10 @@ namespace WindowsFormsApp1
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="value"></param>
-        private void OperationButtonClick(object sender, EventArgs e, string value)
+        private void OperationButtonClick(string value)
         {
-            switch (_model.LastInput)
-            {
-                case Model.InputType.Equal:
-                    _model.ClearInputValue();
-                    break;
-                case Model.InputType.Number:
-                    if (_model.Operation != "")
-                    {
-                        _model.Calculate();
-                        _textBox.Text = _model.ResultValue.ToString();
-                    }
-                    else
-                    {
-                        _model.ResultValue = _model.GetInputValue();
-                    }
-                    _model.ClearInputValue();
-                    break;
-                case Model.InputType.Operation:
-                    _model.Operation = value;
-                    break;
-            }
-            _model.Operation = value;
-            _model.LastInput = Model.InputType.Operation;
+            _model.HandleOperationButtonClick(value);
+            _textBox.Text = _model.ResultValue.ToString();
         }
     }
 }
