@@ -57,6 +57,12 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         private void NumberButtonClick(object sender, EventArgs e, int value)
         {
+            if (_model.LastInput == Model.InputType.Equal)
+            {
+                    _model.ClearInputValue();
+                    _model.ResultValue = 0;
+                    _model.Operation = "+";
+            }
             _model.AddInputValue(value);
             _textBox.Text = _model.GetInputValue().ToString();
             _model.LastInput = Model.InputType.Number;
