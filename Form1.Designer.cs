@@ -57,14 +57,15 @@ namespace WindowsFormsApp1
             //
             // nums
             //
+            int[] numbers = new[] { 7, 8, 9, 4, 5, 6, 1, 2, 3, 0 };
             for (int i = 0; i < 10; i++)
             {
                 System.Windows.Forms.Button num = new System.Windows.Forms.Button();
                 num.Location = new System.Drawing.Point(10 + 65 * (i % 3), 140 + 57 * (i / 3));
-                num.Name = "numBtn" + i.ToString();
+                num.Name = "numBtn" + numbers[i].ToString();
                 num.Size = new System.Drawing.Size(62, 54);
                 num.TabIndex = 1;
-                num.Text = i.ToString();
+                num.Text = numbers[i].ToString();
                 num.UseVisualStyleBackColor = true;
                 num.Click += (sender, e) => NumberButtonClick(int.Parse(num.Text));
                 this._numberButtons.Add(num);
