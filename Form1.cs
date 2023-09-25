@@ -46,6 +46,7 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void DotButtonClick()
         {
+            _model.HandleDotButtonClick();
         }
 
         /// <summary>

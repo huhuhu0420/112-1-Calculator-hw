@@ -20,7 +20,15 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         public void AddInputValue(int value)
         {
-            _inputValue = _inputValue * int.Parse(10.ToString()) + value;
+            if (_isDecimal)
+            {
+                _decimalCounter++;
+                _inputValue += value / (Math.Pow(10, _decimalCounter));
+            }
+            else
+            {
+                _inputValue = _inputValue * int.Parse(10.ToString()) + value;
+            }
             PrintLog();
         }
 
@@ -110,6 +118,7 @@ namespace WindowsFormsApp1
         {
             Calculate();
             LastInput = InputType.Equal;
+            DeActivateDecimal();
         }
         
         /// <summary>
@@ -149,6 +158,15 @@ namespace WindowsFormsApp1
             }
             Operation = value;
             LastInput = InputType.Operation;
+            DeActivateDecimal();
+        }
+        
+        /// <summary>
+        /// dot btn click
+        /// </summary>
+        public void HandleDotButtonClick()
+        {
+            ActivateDecimal();
         }
 
         /// <summary>
@@ -157,6 +175,7 @@ namespace WindowsFormsApp1
         public void HandleClearEntryButtonClick()
         {
             ClearInputValue();
+            DeActivateDecimal();
         }
 
         /// <summary>
@@ -167,6 +186,24 @@ namespace WindowsFormsApp1
             ClearInputValue();
             ClearOperation();
             ClearResultValue();
+            DeActivateDecimal();
+        }
+
+        /// <summary>
+        /// activate decimal
+        /// </summary>
+        public void ActivateDecimal()
+        {
+            _isDecimal = true;
+        }
+
+        /// <summary>
+        /// deactivate decimal
+        /// </summary>
+        public void DeActivateDecimal()
+        {
+            _decimalCounter = 0;
+            _isDecimal = false;
         }
 
         /// <summary>
@@ -181,6 +218,7 @@ namespace WindowsFormsApp1
         private double _inputValue = 0;
         private string _operation = "+";
         private bool _isDecimal = false;
+        private int _decimalCounter = 0;
         private InputType _lastInput = InputType.Number;
 
         public enum InputType
