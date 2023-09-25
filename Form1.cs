@@ -48,6 +48,12 @@ namespace WindowsFormsApp1
         {
         }
 
+        private void CButtonClick()
+        {
+            _model.HandleCButtonClick();
+            _textBox.Text = _model.GetInputValue().ToString();
+        }
+
         /// <summary>
         /// event while clicking numBtn
         /// </summary>

@@ -151,6 +151,11 @@ namespace WindowsFormsApp1
             LastInput = InputType.Operation;
         }
 
+        public void HandleCButtonClick()
+        {
+            clearInputValue();
+        }
+
         /// <summary>
         /// print debug
         /// </summary>
@@ -162,6 +167,7 @@ namespace WindowsFormsApp1
         private double _resultValue = 0;
         private double _inputValue = 0;
         private string _operation = "+";
+        private bool _isDecimal = false;
         private InputType _lastInput = InputType.Number;
 
         public enum InputType

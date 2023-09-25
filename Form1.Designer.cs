@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
             this._operatorButtons= new List<System.Windows.Forms.Button>();
             this._equalButton = new System.Windows.Forms.Button();
             this._dotButton = new Button();
+            this._cButton = new Button();
             this.SuspendLayout();
             // 
             // textBox
@@ -103,6 +104,16 @@ namespace WindowsFormsApp1
             this._dotButton.UseVisualStyleBackColor = true;
             this._dotButton.Click += (sender, e) => this.DotButtonClick();
             // 
+            // c
+            // 
+            this._cButton.Location = new System.Drawing.Point(688, 255);
+            this._cButton.Name = "cBtn";
+            this._cButton.Size = new System.Drawing.Size(62, 54);
+            this._cButton.TabIndex = 1;
+            this._cButton.Text = "c";
+            this._cButton.UseVisualStyleBackColor = true;
+            this._cButton.Click += (sender, e) => this.CButtonClick();
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -110,6 +121,7 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._equalButton);
             this.Controls.Add(this._dotButton);
+            this.Controls.Add(this._cButton);
             this.Controls.Add(this._textBox);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -125,6 +137,8 @@ namespace WindowsFormsApp1
         private List<System.Windows.Forms.Button> _operatorButtons;
         private System.Windows.Forms.Button _equalButton;
         private System.Windows.Forms.Button _dotButton;
+        private System.Windows.Forms.Button _cButton;
+        private System.Windows.Forms.Button _ceButton;
         private Model _model;
         
     }
