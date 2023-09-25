@@ -20,23 +20,23 @@ namespace WindowsFormsApp1
         /// <param name="value"></param>
         public void AddInputValue(int value)
         {
-            _inputValue = _inputValue * 10 + value;
-            debugLog();
+            _inputValue = _inputValue * int.Parse(10.ToString()) + value;
+            PrintLog();
         }
 
         /// <summary>
         /// clear input
         /// </summary>
-        private void clearInputValue()
+        private void ClearInputValue()
         {
             _inputValue = 0;
-            debugLog();
+            PrintLog();
         }
 
         /// <summary>
         /// clear result
         /// </summary>
-        private void clearResultValue()
+        private void ClearResultValue()
         {
             _resultValue = 0;
         }
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
         /// <summary>
         /// clear operation
         /// </summary>
-        private void clearOperation()
+        private void ClearOperation()
         {
             _operation = "+";
         }
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
             set
             {
                 _resultValue = value;
-                debugLog();
+                PrintLog();
             }
         }
 
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
             set
             {
                 _operation = value;
-                debugLog();
+                PrintLog();
             }
         }
 
@@ -120,9 +120,9 @@ namespace WindowsFormsApp1
         {
             if (LastInput == InputType.Equal)
             {
-                    clearInputValue();
-                    clearResultValue();
-                    clearOperation();
+                ClearInputValue();
+                ClearResultValue();
+                ClearOperation();
             }
             AddInputValue(value);
             LastInput = InputType.Number;
@@ -137,11 +137,11 @@ namespace WindowsFormsApp1
             switch (LastInput)
             {
                 case InputType.Equal:
-                    clearInputValue();
+                    ClearInputValue();
                     break;
                 case InputType.Number:
                     Calculate();
-                    clearInputValue();
+                    ClearInputValue();
                     break;
                 case InputType.Operation:
                     Operation = value;
@@ -151,17 +151,20 @@ namespace WindowsFormsApp1
             LastInput = InputType.Operation;
         }
 
-        public void HandleCButtonClick()
+        /// <summary>
+        /// c btn click
+        /// </summary>
+        public void HandleClearButtonClick()
         {
-            clearInputValue();
+            ClearInputValue();
         }
 
         /// <summary>
         /// print debug
         /// </summary>
-        private void debugLog()
+        private void PrintLog()
         {
-            Debug.WriteLine("input: "+ _inputValue.ToString() + " | " + "result: " + _resultValue.ToString() + " | " + "operation: " + _operation);
+            Debug.WriteLine("input: ".ToString()+ _inputValue.ToString() + " | ".ToString() + "result: ".ToString() + _resultValue.ToString() + " | ".ToString() + "operation: ".ToString() + _operation);
         }
 
         private double _resultValue = 0;
@@ -174,7 +177,7 @@ namespace WindowsFormsApp1
         {
             Number, 
             Operation,
-            Equal,
+            Equal
         }
     }
 }

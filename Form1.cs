@@ -48,9 +48,12 @@ namespace WindowsFormsApp1
         {
         }
 
-        private void CButtonClick()
+        /// <summary>
+        /// c btn click
+        /// </summary>
+        private void ClearButtonClick()
         {
-            _model.HandleCButtonClick();
+            _model.HandleClearButtonClick();
             _textBox.Text = _model.GetInputValue().ToString();
         }
 
@@ -72,7 +75,7 @@ namespace WindowsFormsApp1
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <param name="value"></param>
-        private void OperationButtonClick(string value)
+        private void ClickOperatorButton(string value)
         {
             _model.HandleOperationButtonClick(value);
             _textBox.Text = _model.ResultValue.ToString();

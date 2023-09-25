@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             this._operatorButtons= new List<System.Windows.Forms.Button>();
             this._equalButton = new System.Windows.Forms.Button();
             this._dotButton = new Button();
-            this._cButton = new Button();
+            this._clearButton = new Button();
             this.SuspendLayout();
             // 
             // textBox
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
                 operatorButton.TabIndex = 1;
                 operatorButton.Text = operators[i];
                 operatorButton.UseVisualStyleBackColor = true;
-                operatorButton.Click += (sender, e) => OperationButtonClick(operatorButton.Text);
+                operatorButton.Click += (sender, e) => ClickOperatorButton(operatorButton.Text);
                 this._operatorButtons.Add(operatorButton);
                 this.Controls.Add((this._operatorButtons[i]));
             }
@@ -106,13 +106,13 @@ namespace WindowsFormsApp1
             // 
             // c
             // 
-            this._cButton.Location = new System.Drawing.Point(688, 255);
-            this._cButton.Name = "cBtn";
-            this._cButton.Size = new System.Drawing.Size(62, 54);
-            this._cButton.TabIndex = 1;
-            this._cButton.Text = "c";
-            this._cButton.UseVisualStyleBackColor = true;
-            this._cButton.Click += (sender, e) => this.CButtonClick();
+            this._clearButton.Location = new System.Drawing.Point(688, 255);
+            this._clearButton.Name = "cBtn";
+            this._clearButton.Size = new System.Drawing.Size(62, 54);
+            this._clearButton.TabIndex = 1;
+            this._clearButton.Text = "c";
+            this._clearButton.UseVisualStyleBackColor = true;
+            this._clearButton.Click += (sender, e) => this.ClearButtonClick();
             // 
             // Form1
             // 
@@ -121,7 +121,7 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._equalButton);
             this.Controls.Add(this._dotButton);
-            this.Controls.Add(this._cButton);
+            this.Controls.Add(this._clearButton);
             this.Controls.Add(this._textBox);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -137,8 +137,8 @@ namespace WindowsFormsApp1
         private List<System.Windows.Forms.Button> _operatorButtons;
         private System.Windows.Forms.Button _equalButton;
         private System.Windows.Forms.Button _dotButton;
-        private System.Windows.Forms.Button _cButton;
-        private System.Windows.Forms.Button _ceButton;
+        private System.Windows.Forms.Button _clearButton;
+        private System.Windows.Forms.Button _clearEntryButton;
         private Model _model;
         
     }
