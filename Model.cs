@@ -152,11 +152,21 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
+        /// ce btn click
+        /// </summary>
+        public void HandleClearEntryButtonClick()
+        {
+            ClearInputValue();
+        }
+
+        /// <summary>
         /// c btn click
         /// </summary>
         public void HandleClearButtonClick()
         {
             ClearInputValue();
+            ClearOperation();
+            ClearResultValue();
         }
 
         /// <summary>

@@ -49,6 +49,15 @@ namespace WindowsFormsApp1
         }
 
         /// <summary>
+        /// ce btn click
+        /// </summary>
+        private void ClearEntryButtonClick()
+        {
+            _model.HandleClearEntryButtonClick();
+            _textBox.Text = _model.GetInputValue().ToString();
+        }
+
+        /// <summary>
         /// c btn click
         /// </summary>
         private void ClearButtonClick()
