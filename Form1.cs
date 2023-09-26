@@ -12,10 +12,10 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public Form1(Model model)
         {
             InitializeComponent();
-            _model = new Model();
+            _model = model;
         }
 
         /// <summary>
