@@ -155,6 +155,9 @@ namespace WindowsFormsApp1
                 case InputType.Operation:
                     Operation = value;
                     break;
+                case InputType.ClearEntry:
+                    Operation = value;
+                    break;
             }
             Operation = value;
             LastInput = InputType.Operation;
@@ -176,6 +179,7 @@ namespace WindowsFormsApp1
         {
             ClearInputValue();
             ActivateDecimal(false);
+            LastInput = InputType.ClearEntry;
         }
 
         /// <summary>
@@ -230,7 +234,8 @@ namespace WindowsFormsApp1
         {
             Number, 
             Operation,
-            Equal
+            Equal,
+            ClearEntry
         }
     }
 }
