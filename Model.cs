@@ -136,12 +136,12 @@ namespace WindowsFormsApp1
             AddInputValue(value);
             LastInput = InputType.Number;
         }
-        
+
         /// <summary>
-        /// handle click
+        /// process
         /// </summary>
         /// <param name="value"></param>
-        public void HandleOperationButtonClick(string value)
+        private void Process(string value)
         {
             switch (LastInput)
             {
@@ -159,6 +159,15 @@ namespace WindowsFormsApp1
                     Operation = value;
                     break;
             }
+        }
+        
+        /// <summary>
+        /// handle click
+        /// </summary>
+        /// <param name="value"></param>
+        public void HandleOperationButtonClick(string value)
+        {
+            Process(value);
             Operation = value;
             LastInput = InputType.Operation;
             ActivateDecimal(false);
