@@ -1,3 +1,3 @@
-# 112-1 Windows Programmin hw
+# 112-1 Windows Programing hw
 
 ## A simple calulator with many bugs :)
